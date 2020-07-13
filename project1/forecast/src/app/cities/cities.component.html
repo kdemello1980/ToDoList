@@ -1,0 +1,32 @@
+
+<!-- <div class="ng-container"> -->
+<mat-card class="mat-elevation-z4">
+<mat-table class="maz-elevation-z8" [dataSource]="allCities">
+
+    <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+        <mat-cell *matCellDef="let city">{{city.state}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+        <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+        <mat-cell *matCellDef="let city">{{city.city}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="zip">
+        <mat-header-cell *matHeaderCellDef>Zip Code</mat-header-cell>
+        <mat-cell *matCellDef="let city">{{city.zip}}</mat-cell>
+    </ng-container>
+
+    <!--
+        displayedColumns is defined in cities.component.ts
+    -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"
+        (click)="onCityClicked(row)"></mat-row>
+</mat-table>
+
+<button (click)="getAllCities()">to console</button>
+</mat-card>
+<!-- </mat-card> -->
+<!-- </div> -->
