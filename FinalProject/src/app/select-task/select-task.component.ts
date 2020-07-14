@@ -12,12 +12,13 @@ export class SelectTaskComponent implements OnInit {
 
   @Output() filteredTasks: Task[];
 
-  filterBy: string;
-
   constructor() { }
 
-  filterTasks(): Task[]{
-    return null;
+  filterTasks(filterBy: string): Task[]{
+    filterBy = filterBy.toLocaleLowerCase();
+
+    return this.allTasks.filter((task: Task) =>
+      task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   ngOnInit(): void {
