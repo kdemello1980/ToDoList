@@ -1,0 +1,21 @@
+.content {
+    padding: 16px;
+    background-image: url('../../assets/icons/1017.png');
+    background-repeat: repeat;
+    text-shadow: 4px;
+    color: black;
+}
+
+/* .content > mat-card {
+    width: 256px;
+} */
+
+th {
+    text-align: left;
+} 
+
+/* .forecast-title{
+    width: 100%;
+    padding: 16px;
+    align-content: center;
+} */
