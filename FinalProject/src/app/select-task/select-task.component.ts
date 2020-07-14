@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { Task } from './task';
 
 @Component({
   selector: 'app-select-task',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectTaskComponent implements OnInit {
 
+  @Input() taskList: Task[];
+
+  @Output() filteredTasks: Task[];
+
+  filterBy: string;
+
   constructor() { }
+
+  filterArray(): Task[]{
+    return null;
+  }
 
   ngOnInit(): void {
   }
