@@ -8,7 +8,7 @@ import { Task } from './task';
 })
 export class SelectTaskComponent implements OnInit {
 
-  @Input() taskList: Task[];
+  @Input() allTasks: Task[];
 
   @Output() filteredTasks: Task[];
 
@@ -16,7 +16,7 @@ export class SelectTaskComponent implements OnInit {
 
   constructor() { }
 
-  filterArray(): Task[]{
+  filterTasks(): Task[]{
     return null;
   }
 
