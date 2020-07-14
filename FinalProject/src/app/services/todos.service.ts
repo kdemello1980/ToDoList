@@ -9,7 +9,7 @@ export class TodosService {
 
   baseUrl = 'http://ec2-18-191-63-47.us-east-2.compute.amazonaws.com:8080/todos';
   constructor(private httpCli: HttpClient) {  }
-  
+
   postTodo(todoForm): Observable<string>{
     const httpHead = {
       headers: new HttpHeaders({
