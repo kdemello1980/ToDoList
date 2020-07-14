@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 /**
  * Components
@@ -30,6 +31,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -47,7 +50,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatTableModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSelectModule,
+    MatButtonModule,
+    RouterModule.forRoot([
+      { path: 'udpate-task', component: UpdateTaskComponent },
+      { path: '**', redirectTo: 'update-task'}
+
+    ])
   ],
   providers: [TodosService, UpdateTaskService, SelectTaskService],
   bootstrap: [AppComponent]
