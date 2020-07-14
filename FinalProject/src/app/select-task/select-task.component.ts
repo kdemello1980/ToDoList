@@ -12,6 +12,19 @@ export class SelectTaskComponent implements OnInit {
 
   @Output() filteredTasks: ITask[];
 
+  taskListFilter = 'Default';
+
+  get taskFilter(): string{
+    return this.taskListFilter;
+  }
+
+  set taskFilter(temp: string){
+    this.taskListFilter = temp;
+    this.filteredTasks = this.taskListFilter ?
+      this.filterTasks(this.taskListFilter) :
+      this.filteredTasks;
+  }
+
   constructor() { }
 
   filterTasks(filterBy: string): ITask[]{
