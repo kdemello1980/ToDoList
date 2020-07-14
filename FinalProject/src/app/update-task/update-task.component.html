@@ -1,1 +1,67 @@
 <p>update-task works!</p>
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="75%">
+            <mat-card class="mat-elevation-z4">
+                <mat-card-header>
+                    <!--
+                        Replace interpolation with real task id.
+                    -->
+                    <mat-card-title>Details for Task </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <!--
+                        Title input field.
+                    -->
+                    <mat-card>
+                        <mat-card-content>
+
+                            <mat-form-field class="input" appearance="standard">
+                                <mat-label>Task Title</mat-label>
+                                <input matInput placeholder="title">
+                                <mat-hint>Title</mat-hint>
+                            </mat-form-field>
+                            <br>
+                            <!--
+                                Status drop down, check card status and show correct state
+                                when initialized.
+                            -->
+                            <mat-form-field class="select" appearance="standard">
+                                <mat-label>Task Status</mat-label>
+                                <mat-select>
+                                    <mat-option value="Open">Open</mat-option>
+                                    <mat-option value="Complete">Complete</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </mat-card-content>
+
+                    </mat-card>
+                    <br>
+                    <!--
+                        Task details text input.  Need to prepopulate with actual task contents.
+                    -->
+
+                    <mat-card>
+                        <mat-card-content>
+                            <mat-form-field class="task-details" appearance="outline">
+                                <mat-label>Task Details</mat-label>
+                                <textarea matTextareaAutosize matAutosizeMinRows='5' matAutosizeMaxRows='20'
+                                    matInput>Here are the details for the task</textarea>
+                            </mat-form-field>
+                            <br>
+                            <!--
+                                Cancel and Update buttons.
+                            -->
+                            <button mat-button color="primary">Cancel</button>
+                            <button mat-raised-button color="primary">Update</button>
+
+                        </mat-card-content>
+
+                    </mat-card>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
