@@ -17,6 +17,7 @@ import { SelectTaskComponent } from './select-task/select-task.component';
  * Services
  */
 import { TodosService } from './services/todos.service';
+import { TaskListComponent } from './task-list/task-list.component';
 import { UpdateTaskService } from './services/update-task.service';
 import { SelectTaskService } from './services/select-task.service';
 
@@ -34,6 +35,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
+    TaskListComponent,
     UpdateTaskComponent,
     SelectTaskComponent
   ],
