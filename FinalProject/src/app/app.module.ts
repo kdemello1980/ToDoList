@@ -20,6 +20,16 @@ import { TodosService } from './services/todos.service';
 import { UpdateTaskService } from './services/update-task.service';
 import { SelectTaskService } from './services/select-task.service';
 
+/**
+ * Material Modules
+ */
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +40,12 @@ import { SelectTaskService } from './services/select-task.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatTableModule,
+    MatInputModule,
+    FlexLayoutModule
   ],
   providers: [TodosService, UpdateTaskService, SelectTaskService],
   bootstrap: [AppComponent]
