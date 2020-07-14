@@ -30,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DeleteTaskComponent } from './delete-task/delete-task.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppComponent,
     TaskListComponent,
     UpdateTaskComponent,
-    SelectTaskComponent
+    SelectTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     BrowserModule,
