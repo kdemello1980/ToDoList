@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { Task } from './task';
+import { ITask } from '../task-list/task';
 
 @Component({
   selector: 'app-select-task',
@@ -8,16 +8,16 @@ import { Task } from './task';
 })
 export class SelectTaskComponent implements OnInit {
 
-  @Input() allTasks: Task[];
+  @Input() allTasks: ITask[];
 
-  @Output() filteredTasks: Task[];
+  @Output() filteredTasks: ITask[];
 
   constructor() { }
 
-  filterTasks(filterBy: string): Task[]{
+  filterTasks(filterBy: string): ITask[]{
     filterBy = filterBy.toLocaleLowerCase();
 
-    return this.allTasks.filter((task: Task) =>
+    return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
