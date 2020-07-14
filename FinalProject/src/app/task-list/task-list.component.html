@@ -15,7 +15,20 @@
             </tr>
         </thead>
         <tbody>
+            <tr *ngFor = 'let temp of filteredTodos'>
+                <td>
+                    {{temp.id}}
+                </td>
+                <td>
+                    {{temp.title}}
+                </td>
+                <td>
+                    {{temp.createdOn}}
+                </td>
+                <td>
+                    {{temp.completed}}
+                </td>
+            </tr>
         </tbody>
-        <button (click) = "getAllTodos()">Refresh Todos</button>
     </table>
 </div>
