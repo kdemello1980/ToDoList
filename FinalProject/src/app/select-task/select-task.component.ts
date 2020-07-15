@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { ITask } from '../task-list/task';
+import { TodosService } from '../services/todos.service';
 
 @Component({
   selector: 'app-select-task',
@@ -25,13 +26,24 @@ export class SelectTaskComponent implements OnInit {
       this.filteredTasks;
   }
 
-  constructor() { }
+  constructor(private todoServ: TodosService) { }
 
   filterTasks(filterBy: string): ITask[]{
     filterBy = filterBy.toLocaleLowerCase();
 
     return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  getTasks(): void{
+    this.todoServ.getTodos().subscribe(
+      response => {
+        console.log(response);
+        for (const temp of response){
+          this.allTasks.push(temp);
+        }
+      }
+    );
   }
 
   ngOnInit(): void {
