@@ -32,7 +32,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { TaskTableComponent } from './task-table/task-table.component';
 import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,7 +43,6 @@ import { MatButtonModule } from '@angular/material/button';
     TaskListComponent,
     UpdateTaskComponent,
     SelectTaskComponent,
-    TaskTableComponent,
     DeleteTaskComponent
   ],
   imports: [
