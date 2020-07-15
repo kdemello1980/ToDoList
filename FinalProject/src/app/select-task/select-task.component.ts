@@ -16,7 +16,7 @@ export class SelectTaskComponent implements OnInit {
 
   @Output() filteredTasks: ITask[];
 
-  taskListFilter = 'Default';
+  taskListFilter = '';
 
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
   dataSource = this.filteredTasks;
@@ -33,7 +33,8 @@ export class SelectTaskComponent implements OnInit {
     this.table.renderRows();
   }
 
-  constructor(private todoServ: TodosService) { }
+  constructor(private todoServ: TodosService) {
+  }
 
   filterTasks(filterBy: string): ITask[]{
     filterBy = filterBy.toLocaleLowerCase();
@@ -45,7 +46,6 @@ export class SelectTaskComponent implements OnInit {
   getTasks(): void{
     this.todoServ.getTodos().subscribe(
       response => {
-        console.log(response);
         for (const temp of response){
           this.allTasks.push(temp);
         }
@@ -55,7 +55,13 @@ export class SelectTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-    this.dataSource = this.allTasks;
+    console.log(this.allTasks);
+    this.filteredTasks = this.allTasks;
+    this.dataSource = this.filteredTasks;
+    console.log(this.dataSource);
+  }
+
+  ngAfterViewChecked(): void{
     this.table.renderRows();
   }
 
