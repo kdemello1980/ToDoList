@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /**
  * Components
@@ -30,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TaskTableComponent } from './task-table/task-table.component';
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppComponent,
     TaskListComponent,
     UpdateTaskComponent,
-    SelectTaskComponent
+    SelectTaskComponent,
+    TaskTableComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatTableModule,
     MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule
   ],
   providers: [TodosService, UpdateTaskService, SelectTaskService],
