@@ -1,6 +1,5 @@
 <div>
-    <input type="text" [(ngModel)] = 'taskFilter'> {{taskFilter}}
-    <button (click) = 'getTasks()'>Tasks</button>
+    <input type="text" [(ngModel)] = 'taskFilter'>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
