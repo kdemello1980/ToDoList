@@ -31,7 +31,6 @@ export class TaskListComponent implements OnInit {
           this.allTodos.push(JSON.parse(todoString));
         }
         this.filteredTodos = this.allTodos;
-        console.log(this.allTodos);
       }
     );
   }

@@ -55,10 +55,8 @@ export class SelectTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-    console.log(this.allTasks);
     this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;
-    console.log(this.dataSource);
   }
 
   ngAfterViewChecked(): void{
