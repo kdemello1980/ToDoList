@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
+import {MatTable} from '@angular/material';
 
 @Component({
   selector: 'app-select-task',
@@ -9,11 +10,16 @@ import { TodosService } from '../services/todos.service';
 })
 export class SelectTaskComponent implements OnInit {
 
-  @Input() allTasks: ITask[];
+  @ViewChild(MatTable) table: MatTable<ITask>;
+
+  allTasks: ITask[] = [];
 
   @Output() filteredTasks: ITask[];
 
   taskListFilter = 'Default';
+
+  displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
+  dataSource = this.filteredTasks;
 
   get taskFilter(): string{
     return this.taskListFilter;
@@ -47,6 +53,9 @@ export class SelectTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getTasks();
+    this.dataSource = this.allTasks;
+    refr
   }
 
 }

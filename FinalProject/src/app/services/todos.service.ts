@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ITask } from '../task-list/task';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class TodosService {
     return this.httpCli.post<string>(this.baseUrl, todoForm, httpHead);
   }
 
-  getTodos(): Observable<string[]>{
+  getTodos(): Observable<ITask[]>{
     // Our API needs a special HEAD to communicate.
     const httpHead = {
       headers: new HttpHeaders({
@@ -30,6 +31,6 @@ export class TodosService {
       })
     };
 
-    return this.httpCli.get<string[]>(this.baseUrl, httpHead);
+    return this.httpCli.get<ITask[]>(this.baseUrl, httpHead);
   }
 }
