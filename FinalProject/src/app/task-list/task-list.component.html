@@ -30,7 +30,7 @@
                     {{temp.completed}}
                 </td>
                 <td>
-                    <app-delete-task [id]='temp.id' (click) = 'deleteAndRefresh(temp.id)'></app-delete-task>
+                    <app-delete-task [id]='temp.id' (click) = 'deleteTodo(temp.id,temp.title)'></app-delete-task>
                 </td>
             </tr>
         </tbody>
