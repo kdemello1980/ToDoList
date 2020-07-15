@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
-import {MatTable} from '@angular/material';
+import {MatTable} from '@angular/material/table';
 
 @Component({
   selector: 'app-select-task',
@@ -27,9 +27,10 @@ export class SelectTaskComponent implements OnInit {
 
   set taskFilter(temp: string){
     this.taskListFilter = temp;
-    this.filteredTasks = this.taskListFilter ?
+    this.dataSource = this.taskListFilter ?
       this.filterTasks(this.taskListFilter) :
       this.filteredTasks;
+    this.table.renderRows();
   }
 
   constructor(private todoServ: TodosService) { }
@@ -55,7 +56,7 @@ export class SelectTaskComponent implements OnInit {
   ngOnInit(): void {
     this.getTasks();
     this.dataSource = this.allTasks;
-    refr
+    this.table.renderRows();
   }
 
 }
