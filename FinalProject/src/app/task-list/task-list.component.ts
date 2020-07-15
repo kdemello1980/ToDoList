@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TodosService} from '../services/todos.service';
 import {ITask} from './task';
-import {Observable} from 'rxjs';
+import {DeleteTaskComponent} from '../delete-task/delete-task.component';
+import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select';
 
 @Component({
   selector: 'app-task-list',
@@ -21,19 +22,31 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getAllTodos(): ITask[] {
+  getAllTodos(): void {
     this.allTodos = [];
     this.todos.getTodos().subscribe(
       response => {
-        for(let todo of response) {
-          let todoString = JSON.stringify(todo);
+        for(const todo of response) {
+          const todoString = JSON.stringify(todo);
           this.allTodos.push(JSON.parse(todoString));
         }
-        console.log(this.allTodos);
-        
       }
     );
     this.filteredTodos = this.allTodos;
-    return this.allTodos;
+    console.log(this.allTodos);
   }
+
+  deleteTodo(id): void {
+    console.log(id);
+    this.todos.deleteTodo(id).subscribe();
+  }
+
+  deleteAndRefresh(id): void {
+    if (confirm('Delete this task?')) {
+      this.deleteTodo(id);
+      alert('Task deleted');
+      this.getAllTodos();
+    }
+  }
+
 }

@@ -84,4 +84,14 @@ export class TodosService {
 
     return this.httpCli.get<string[]>(this.baseUrl, httpHead);
   }
+
+  deleteTodo(id: number): Observable<string[]>{
+      const httpHead = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        })
+      };
+      return this.httpCli.delete<string[]>(this.baseUrl + '/' + id, httpHead);
+  }
 }
