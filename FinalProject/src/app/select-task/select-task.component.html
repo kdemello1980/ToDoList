@@ -1,5 +1,5 @@
 <div>
-    <input type="text" [(ngModel)] = 'taskFilter'>
+  <mat-card>Search Tasks: <input type="text" [(ngModel)] = 'taskFilter' placeholder="Search by..."></mat-card>
 </div>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
