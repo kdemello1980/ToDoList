@@ -1,6 +1,9 @@
-<div>
-    <input type="text" [(ngModel)] = 'taskFilter'>
-</div>
+<mat-card>
+    <mat-form-field class="example-full-width">
+      <mat-label>Search Tasks by Title</mat-label>
+      <input matInput [(ngModel)] = 'taskFilter'>
+    </mat-form-field>
+</mat-card>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
