@@ -36,6 +36,7 @@ import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     TaskListComponent,
     UpdateTaskComponent,
     SelectTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
