@@ -20,6 +20,8 @@ export class SelectTaskComponent implements OnInit {
 
   taskListFilter = '';
 
+  statusFilter = '---';
+
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
   dataSource = this.filteredTasks;
 
