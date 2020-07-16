@@ -35,6 +35,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { MatButtonModule } from '@angular/material/button';
     FlexLayoutModule,
     MatSelectModule,
     MatButtonModule,
+    MatDialogModule,
     RouterModule.forRoot([
       { path: 'udpate-task', component: UpdateTaskComponent },
       { path: '**', redirectTo: 'update-task'}

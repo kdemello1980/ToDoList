@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
 import {MatTable} from '@angular/material/table';
+import { UpdateTaskComponent } from '../update-task/update-task.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-select-task',
@@ -33,7 +35,7 @@ export class SelectTaskComponent implements OnInit {
     this.table.renderRows();
   }
 
-  constructor(private todoServ: TodosService) {
+  constructor(private todoServ: TodosService, private dialog: MatDialog) {
   }
 
   filterTasks(filterBy: string): ITask[]{
@@ -51,6 +53,14 @@ export class SelectTaskComponent implements OnInit {
         }
       }
     );
+  }
+ 
+  openUpdateDialog(): void {
+    this.dialog.open(UpdateTaskComponent, {
+      height: '550px',
+      width: '600px',
+    });
+    // console.log('clicked');
   }
 
   ngOnInit(): void {
