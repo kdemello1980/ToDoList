@@ -30,22 +30,18 @@ export class TaskListComponent implements OnInit {
           const todoString = JSON.stringify(todo);
           this.allTodos.push(JSON.parse(todoString));
         }
+        this.filteredTodos = this.allTodos;
       }
     );
-    this.filteredTodos = this.allTodos;
-    console.log(this.allTodos);
   }
 
-  deleteTodo(id): void {
-    console.log(id);
-    this.todos.deleteTodo(id).subscribe();
-  }
-
-  deleteAndRefresh(id): void {
-    if (confirm('Delete this task?')) {
-      this.deleteTodo(id);
-      alert('Task deleted');
-      this.getAllTodos();
+  deleteTodo(id: number, title: string): void {
+    if (confirm('Are you sure you want to delete this task?\n' + title)) {
+      this.todos.deleteTodo(id).subscribe(
+      response => {
+        this.getAllTodos();
+      }
+    );
     }
   }
 

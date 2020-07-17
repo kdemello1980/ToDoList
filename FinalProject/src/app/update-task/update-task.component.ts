@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITask } from '../task-list/task';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -30,7 +30,8 @@ export class UpdateTaskComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<UpdateTaskComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ITask,
               private fb: FormBuilder,
-              private tService: TodosService
+              private tService: TodosService,
+              private cd: ChangeDetectorRef
     ) {
       this.foo = this.data.completed;
       console.log(this.foo);
@@ -41,7 +42,7 @@ export class UpdateTaskComponent implements OnInit {
 // I have to wrap conditionals in functions? WTF?
 blargh(): void {
   if (this.foo == false){
-    this.selectedComplete = this.completedList[0].value
+    this.selectedComplete = this.completedList[0].value;
   } else {
     this.selectedComplete = this.completedList[1].value;
   }
@@ -67,6 +68,7 @@ save(): void {
         console.log('success');
       }
     );
+    this.cd.detectChanges();
     this.dialogRef.close(this.form.value);
   }
 
