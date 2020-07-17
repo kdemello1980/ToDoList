@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
 import {MatTable} from '@angular/material/table';
@@ -77,8 +77,9 @@ export class SelectTaskComponent implements OnInit {
     this.table.renderRows();
   }
 
-  ngDoCheck(){
-    this.getTasks();
+  ngDoCheck(): void {
+    // this.table.renderRows();
+    console.log('docheck');
   }
 
 }
