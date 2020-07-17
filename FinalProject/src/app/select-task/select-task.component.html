@@ -13,6 +13,7 @@
           <mat-option value='false'>Not Complete</mat-option>
         </mat-select>
     </mat-form-field>
+    <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
 </mat-card>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

@@ -66,13 +66,22 @@ export class SelectTaskComponent implements OnInit {
   getTasks(): void{
     this.todoServ.getTodos().subscribe(
       response => {
+        this.allTasks = [];
         for (const temp of response){
           this.allTasks.push(temp);
         }
       }
     );
   }
- 
+
+  refreshList(): void{
+    this.getTasks();
+    this.filteredTasks = this.allTasks;
+    this.dataSource = this.filteredTasks;
+    this.taskFilter = '';
+    this.table.renderRows();
+  }
+
   openUpdateDialog(): void {
     this.dialog.open(UpdateTaskComponent, {
       height: '550px',
@@ -88,7 +97,7 @@ export class SelectTaskComponent implements OnInit {
   }
 
   ngAfterViewChecked(): void{
-    this.table.renderRows();
+    this.refreshList();
   }
 
 }
