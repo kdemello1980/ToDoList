@@ -78,8 +78,8 @@ export class SelectTaskComponent implements OnInit {
     this.dataSource = this.filteredTasks;
   }
 
-  ngAfterViewChecked(): void{
-    this.refreshList();
+  ngAfterViewsInit(){
+    this.table.renderRows();
   }
 
 }
