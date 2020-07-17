@@ -78,8 +78,5 @@ export class SelectTaskComponent implements OnInit {
     this.dataSource = this.filteredTasks;
   }
 
-  ngAfterViewsInit(){
-    this.table.renderRows();
-  }
 
 }
