@@ -1,1 +1,23 @@
-<button mat-stroked-button color="primary">Create Task</button>
+<section>
+<mat-form-field hintLabel="Max 20 characters" appearance="fill">
+    <mat-label>Enter Your Title</mat-label>
+    <input matInput #input maxlength="20" placeholder="Ex. Nougat" id="taskTitle">
+    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Task Completed</mat-label>
+    <mat-select id="taskComplete">
+        <mat-option value="completed">Yes</mat-option>
+        <mat-option value="incomplete">No</mat-option>
+    </mat-select>
+    <mat-hint align="end">Has the task been finished?</mat-hint>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field appearance="fill">
+    <mat-label>Task Description</mat-label>
+    <textarea matInput id="taskDescription"></textarea>
+  </mat-form-field>
+
+<button mat-stroked-button color="primary" (click)="createTask()">Create Task</button>
+</section>
