@@ -1,6 +1,12 @@
+<div fxFlex.xs="100%" fxFlex.sm="90%" fxFlex.lg="75%">
+
+  <mat-card class="mat-elevation-z8">
+  <mat-card-content>
+
 <div>
     <input type="text" [(ngModel)] = 'taskFilter'>
 </div>
+<br>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -32,6 +38,8 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openUpdateDialog()"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openUpdateDialog(row)"></tr>
   </table>
-    
+</mat-card-content>
+</mat-card>
+</div>
