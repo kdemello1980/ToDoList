@@ -7,10 +7,10 @@
     </mat-form-field> &nbsp; &nbsp;
     <mat-form-field>
       <mat-label>Filter by status</mat-label>
-        <mat-select [(value)]='statusFilter'>
-          <mat-option value='---'>---</mat-option>
-          <mat-option value='complete' selected>Complete</mat-option>
-          <mat-option value='notComplete'>Not Complete</mat-option>
+        <mat-select [(ngModel)]='statFilter'>
+          <mat-option value=''>---</mat-option>
+          <mat-option value='true' selected>Complete</mat-option>
+          <mat-option value='false'>Not Complete</mat-option>
         </mat-select>
     </mat-form-field>
 </mat-card>

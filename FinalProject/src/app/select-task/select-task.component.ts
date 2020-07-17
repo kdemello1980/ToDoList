@@ -20,7 +20,7 @@ export class SelectTaskComponent implements OnInit {
 
   taskListFilter = '';
 
-  statusFilter = '---';
+  statusFilter = '';
 
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
   dataSource = this.filteredTasks;
@@ -31,8 +31,19 @@ export class SelectTaskComponent implements OnInit {
 
   set taskFilter(temp: string){
     this.taskListFilter = temp;
-    this.dataSource = this.taskListFilter ?
-      this.filterTasks(this.taskListFilter) :
+    this.dataSource = this.taskListFilter || this.statusFilter ?
+      this.filterTasks(this.taskListFilter, this.statusFilter) :
+      this.filteredTasks;
+    this.table.renderRows();
+  }
+
+  get statFilter(): string{
+    return this.statusFilter;
+  }
+  set statFilter(temp: string){
+    this.statusFilter = temp;
+    this.dataSource = this.taskListFilter || this.statusFilter ?
+      this.filterTasks(this.taskListFilter, this.statusFilter) :
       this.filteredTasks;
     this.table.renderRows();
   }
@@ -40,11 +51,16 @@ export class SelectTaskComponent implements OnInit {
   constructor(private todoServ: TodosService, private dialog: MatDialog) {
   }
 
-  filterTasks(filterBy: string): ITask[]{
+  filterTasks(filterBy: string, status: string): ITask[]{
     filterBy = filterBy.toLocaleLowerCase();
+    const statusBool = status === 'true' ? true : false;
 
-    return this.allTasks.filter((task: ITask) =>
+    if (status === '') {
+      return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
+    return this.allTasks.filter((task: ITask) =>
+      task.title.toLocaleLowerCase().indexOf(filterBy) !== -1 && task.completed === statusBool);
   }
 
   getTasks(): void{
