@@ -2,9 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITask } from '../task-list/task';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TodosService } from '../services/todos.service';
 
 interface Completed {
-  value: string;
+  value: boolean;
   viewValue: string;
 }
 
@@ -17,18 +18,19 @@ export class UpdateTaskComponent implements OnInit {
 
   form: FormGroup;
   // data: ITask;
-  selectedComplete: string;
+  selectedComplete: boolean;
   foo: boolean;
 
   completedList: Completed[] = [
-    { value: 'open', viewValue: 'Open'},
-    { value: 'complete', viewValue: 'Complete'}
+    { value: false, viewValue: 'Open'},
+    { value: true, viewValue: 'Complete'}
   ];
 
 
   constructor(private dialogRef: MatDialogRef<UpdateTaskComponent>,
               @Inject(MAT_DIALOG_DATA) public data: ITask,
-              private fb: FormBuilder
+              private fb: FormBuilder,
+              private tService: TodosService
     ) {
       this.foo = this.data.completed;
       console.log(this.foo);
@@ -59,6 +61,12 @@ ngOnInit(): void {
   }
 
 save(): void {
+    console.log(JSON.stringify(this.form.value));
+    this.tService.updateTodo(this.form.value).subscribe(
+      response => {
+        console.log('success');
+      }
+    );
     this.dialogRef.close(this.form.value);
   }
 

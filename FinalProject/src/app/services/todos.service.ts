@@ -29,6 +29,7 @@ export interface ITodo {
   completed: boolean;
   createdOn: string;
   id: number;
+  description: string;
   title: ITodoTitle;
 }
 
@@ -64,7 +65,7 @@ export class TodosService {
   baseUrl = 'http://ec2-54-205-235-199.compute-1.amazonaws.com:8080/todos';
   constructor(private httpCli: HttpClient) {  }
 
-  postTodo(todoForm): Observable<string>{
+  postTodo(todoForm: ITodo): Observable<string>{
     const httpHead = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -72,7 +73,7 @@ export class TodosService {
       })
     };
     // We send our 'todoForm' as the body of our request
-    return this.httpCli.post<string>(this.baseUrl, todoForm, httpHead);
+    return this.httpCli.post<string>(this.baseUrl, JSON.stringify(todoForm), httpHead);
   }
 
   getTodos(): Observable<ITask[]>{
@@ -96,4 +97,17 @@ export class TodosService {
       };
       return this.httpCli.delete<string[]>(this.baseUrl + '/' + id, httpHead);
   }
+
+  updateTodo(todoForm: ITodo): Observable<string>{
+    const httpHead = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // ABSOLUTELY necessary. Allows control from the API
+      })
+    };
+    // const url = `${this.baseUrl}/${todoForm.id}`;
+    // We send our 'todoForm' as the body of our request
+    return this.httpCli.put<string>(this.baseUrl, JSON.stringify(todoForm), httpHead);
+  }
 }
+
