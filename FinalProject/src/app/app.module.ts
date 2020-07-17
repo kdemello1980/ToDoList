@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { SelectTaskComponent } from './select-task/select-task.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 /**
  * Services
@@ -36,7 +37,6 @@ import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { CreateTaskComponent } from './create-task/create-task.component';
 
 
 @NgModule({
