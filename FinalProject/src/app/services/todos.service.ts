@@ -29,41 +29,21 @@ export interface ITodo {
   completed: boolean;
   createdOn: string;
   id: number;
-  title: ITodoTitle;
+  description: string;
+  title: string;
 }
 
-/**
- * ITodoTitle is the interface for Todo titles.  Since the basic todo
- * modle only includes a simple title, rather than a more descriptive
- * title + description, this interface combines both to be stored in the
- * API title field.  The title field of the interface is simply the title.
- * The task field contains the more detailed description.
- *
- * This should serialize to something like:
- *
- *    ITodoTitle: {
- *      "title": "Some task title",
- *      "task": "I need to pick up my laundry, and take the dog to the vet."
- *    }
- *
- * That resulting JSON can be fed to the API as text, and it should work
- * OK.  The view & update task functions need this extra description to
- * be of any real use.
- */
-export interface ITodoTitle {
-  title: string;
-  task: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodosService {
 
+  // baseUrl = 'http://ec2-18-191-63-47.us-east-2.compute.amazonaws.com:8080/todos';
   baseUrl = 'http://ec2-54-205-235-199.compute-1.amazonaws.com:8080/todos';
   constructor(private httpCli: HttpClient) {  }
 
-  postTodo(todoForm): Observable<string>{
+  postTodo(todoForm: any): Observable<string>{
     const httpHead = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -71,7 +51,7 @@ export class TodosService {
       })
     };
     // We send our 'todoForm' as the body of our request
-    return this.httpCli.post<string>(this.baseUrl, todoForm, httpHead);
+    return this.httpCli.post<string>(this.baseUrl, JSON.stringify(todoForm), httpHead);
   }
 
   getTodos(): Observable<ITask[]>{
@@ -95,4 +75,17 @@ export class TodosService {
       };
       return this.httpCli.delete<string[]>(this.baseUrl + '/' + id, httpHead);
   }
+
+  updateTodo(todoForm: ITodo): Observable<string>{
+    const httpHead = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*', // ABSOLUTELY necessary. Allows control from the API
+      })
+    };
+    // const url = `${this.baseUrl}/${todoForm.id}`;
+    // We send our 'todoForm' as the body of our request
+    return this.httpCli.put<string>(this.baseUrl, JSON.stringify(todoForm), httpHead);
+  }
 }
+
