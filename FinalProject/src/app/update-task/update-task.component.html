@@ -18,8 +18,8 @@
 
                             <mat-form-field class="input" appearance="standard">
                                 <mat-label>Task Title</mat-label>
-                                <input matInput placeholder="title" formControlName="title" required>
-                                <mat-hint>[(data.title)]</mat-hint>
+                                <input matInput #input maxlength="20" placeholder="title" formControlName="title" required>
+                                <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
                             </mat-form-field>
                             <br>
                             <!--
@@ -47,7 +47,7 @@
                             <mat-form-field class="task-details" appearance="outline" >
                                 <mat-label>Task Details</mat-label>
                                 <textarea matTextareaAutosize matAutosizeMinRows='5' matAutosizeMaxRows='20'
-                                    matInput #input maxlength="255"formControlName="description" required>[(data.description)]</textarea>
+                                    matInput #input maxlength="255" formControlName="description" required>[(data.description)]</textarea>
                                     <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
                             </mat-form-field>
                             <br>
