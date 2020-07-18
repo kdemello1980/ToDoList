@@ -34,7 +34,7 @@ export class SelectTaskComponent implements OnInit {
     this.dataSource = this.taskListFilter || this.statusFilter ?
       this.filterTasks(this.taskListFilter, this.statusFilter) :
       this.filteredTasks;
-    this.table.renderRows();
+    //this.table.renderRows();
   }
 
   get statFilter(): string{
@@ -45,7 +45,7 @@ export class SelectTaskComponent implements OnInit {
     this.dataSource = this.taskListFilter || this.statusFilter ?
       this.filterTasks(this.taskListFilter, this.statusFilter) :
       this.filteredTasks;
-    this.table.renderRows();
+    //this.table.renderRows();
   }
 
   constructor(private todoServ: TodosService, private dialog: MatDialog) {
@@ -64,9 +64,9 @@ export class SelectTaskComponent implements OnInit {
   }
 
   getTasks(): void{
+    this.allTasks = [];
     this.todoServ.getTodos().subscribe(
       response => {
-        this.allTasks = [];
         for (const temp of response){
           this.allTasks.push(temp);
         }
@@ -79,6 +79,7 @@ export class SelectTaskComponent implements OnInit {
     this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;
     this.taskFilter = '';
+    console.log(this.allTasks);
     this.table.renderRows();
   }
 
@@ -94,6 +95,8 @@ export class SelectTaskComponent implements OnInit {
     this.getTasks();
     this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;
+    console.log(this.dataSource);
+    this.taskFilter = 'e';
   }
 
 
