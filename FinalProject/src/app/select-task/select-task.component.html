@@ -5,10 +5,12 @@
     
 
 <div>
-    <span>
+  <mat-form-field>
+
     <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filter">
+
+  </mat-form-field>
     <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
-    </span>
 </div>
 
 <table mat-table [dataSource]="matDataSource" class="mat-elevation-z8">

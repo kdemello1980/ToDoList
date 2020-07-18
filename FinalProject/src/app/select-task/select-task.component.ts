@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, DoCheck } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
@@ -77,7 +77,10 @@ export class SelectTaskComponent implements OnInit {
     dialogConfig.height = '520px';
     dialogConfig.width = '500px';
 
-    this.dialog.open(UpdateTaskComponent, dialogConfig);
+    const ref = this.dialog.open(UpdateTaskComponent, dialogConfig);
+    ref.afterClosed().subscribe(() => {
+      this.refreshList();
+    });
     console.log(data);
   }
 
@@ -92,13 +95,5 @@ export class SelectTaskComponent implements OnInit {
   doFilter = (value: string) => {
     this.matDataSource.filter = value.trim().toLocaleLowerCase();
   }
-
-
-
-
-  // ngDoCheck(): void {
-  //   // this.table.renderRows();
-  //   console.log('docheck');
-  // }
 
 }
