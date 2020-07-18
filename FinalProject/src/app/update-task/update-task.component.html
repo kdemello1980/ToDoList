@@ -28,8 +28,9 @@
                             -->
                             <mat-form-field class="select" appearance="standard">
                                 <mat-label>Task Status</mat-label>
-                                <mat-select  formControlName="completed" [(ngModel)]="selectedComplete">
-                                    <mat-option></mat-option>
+                                <!-- <mat-select  formControlName="completed" [(ngModel)]="selectedComplete"> -->
+                                    <mat-select  formControlName="completed">
+                                    <!-- <mat-option></mat-option> -->
                                     <mat-option [value]="option.value" *ngFor="let option of completedList">{{ option.viewValue }}</mat-option>
                                 </mat-select>
                             </mat-form-field>
@@ -46,7 +47,8 @@
                             <mat-form-field class="task-details" appearance="outline" >
                                 <mat-label>Task Details</mat-label>
                                 <textarea matTextareaAutosize matAutosizeMinRows='5' matAutosizeMaxRows='20'
-                                    matInput formControlName="description">[(data.description)]</textarea>
+                                    matInput #input maxlength="255"formControlName="description">[(data.description)]</textarea>
+                                    <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
                             </mat-form-field>
                             <br>
                             <!--

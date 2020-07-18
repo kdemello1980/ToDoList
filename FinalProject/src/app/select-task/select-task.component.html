@@ -10,21 +10,26 @@
 <div>
     <mat-form-field class="example-full-width">
       <mat-label>Search Tasks by Title</mat-label>
-      <input matInput [(ngModel)] = 'taskFilter'>
+      <input matInput [(ngModel)] = 'taskListFilter'>
     </mat-form-field> &nbsp; &nbsp;
     <mat-form-field>
       <mat-label>Filter by status</mat-label>
-        <mat-select [(ngModel)]='statFilter'>
+        <mat-select [(ngModel)]='statusFilter'>
           <mat-option value=''>---</mat-option>
           <mat-option value='true' selected>Complete</mat-option>
           <mat-option value='false'>Not Complete</mat-option>
         </mat-select>
     </mat-form-field>
     <!--<button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>-->
-</div>
-<br>
+  <mat-form-field>
 
-<table mat-table [dataSource]="dataSource" (load)="table.renderRows()" class="mat-elevation-z8">
+    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filter">
+
+  </mat-form-field>
+    <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
+</div>
+
+<table mat-table [dataSource]="matDataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
