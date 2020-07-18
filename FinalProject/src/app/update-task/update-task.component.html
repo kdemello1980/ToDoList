@@ -6,7 +6,7 @@
                     <!--
                         Replace interpolation with real task id.
                     -->
-                    <mat-card-title>Details for Task [(data.id)] </mat-card-title>
+                    <mat-card-title>Details for Task {{data.id}} </mat-card-title>
                 </mat-card-header>
 
                 <mat-card-content>
@@ -47,7 +47,7 @@
                             <mat-form-field class="task-details" appearance="outline" >
                                 <mat-label>Task Details</mat-label>
                                 <textarea matTextareaAutosize matAutosizeMinRows='5' matAutosizeMaxRows='20'
-                                    matInput #input maxlength="255"formControlName="description">[(data.description)]</textarea>
+                                    matInput #input maxlength="255"formControlName="description" required>[(data.description)]</textarea>
                                     <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
                             </mat-form-field>
                             <br>
