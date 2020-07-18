@@ -5,12 +5,13 @@
     
 
 <div>
-    <input type="text" [(ngModel)] = 'taskFilter'>
+    <span>
+    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Filter">
     <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
+    </span>
 </div>
-<br>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="matDataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

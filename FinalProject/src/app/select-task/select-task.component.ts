@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, Output, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
-import {MatTable} from '@angular/material/table';
+import {MatTable, MatTableDataSource} from '@angular/material/table';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
@@ -16,26 +16,31 @@ export class SelectTaskComponent implements OnInit {
 
   allTasks: ITask[] = [];
 
-  @Output() filteredTasks: ITask[];
+  // @Output() filteredTasks: ITask[];
 
   taskListFilter = '';
 
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
-  dataSource = this.filteredTasks;
+  // dataSource = this.filteredTasks;
 
-  get taskFilter(): string{
-    return this.taskListFilter;
-  }
+  public matDataSource = new MatTableDataSource<ITask>();
 
-  set taskFilter(temp: string){
-    this.taskListFilter = temp;
-    this.dataSource = this.taskListFilter ?
-      this.filterTasks(this.taskListFilter) :
-      this.filteredTasks;
-    this.table.renderRows();
-  }
+  // get taskFilter(): string{
+  //   return this.taskListFilter;
+  // }
+
+  // set taskFilter(temp: string){
+  //   this.taskListFilter = temp;
+  //   this.dataSource = this.taskListFilter ?
+  //     this.filterTasks(this.taskListFilter) :
+  //     this.filteredTasks;
+  //   this.table.renderRows();
+  // }
 
   constructor(private todoServ: TodosService, private dialog: MatDialog) {
+    this.matDataSource.filterPredicate = (data, filter: string ): boolean => {
+      return data.title.toLowerCase().includes(filter);
+    };
   }
 
   filterTasks(filterBy: string): ITask[]{
@@ -48,19 +53,19 @@ export class SelectTaskComponent implements OnInit {
   getTasks(): void{
     this.todoServ.getTodos().subscribe(
       response => {
-        this.allTasks = [];
-        for (const temp of response){
-          this.allTasks.push(temp);
+        // this.allTasks = [];
+        // for (const temp of response){
+        //   this.allTasks.push(temp);
+          this.matDataSource.data = response as ITask[];
         }
-      }
     );
   }
 
   refreshList(): void{
     this.getTasks();
-    this.filteredTasks = this.allTasks;
-    this.dataSource = this.filteredTasks;
-    this.taskFilter = '';
+    // this.filteredTasks = this.allTasks;
+    // this.dataSource = this.filteredTasks;
+    // this.taskFilter = '';
     this.table.renderRows();
   }
 
@@ -78,9 +83,17 @@ export class SelectTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-    this.filteredTasks = this.allTasks;
-    this.dataSource = this.filteredTasks;
+    // this.filteredTasks = this.allTasks;
+    // this.dataSource = this.filteredTasks;
+    // this.refreshList();
   }
+
+
+  doFilter = (value: string) => {
+    this.matDataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+
 
 
   // ngDoCheck(): void {
