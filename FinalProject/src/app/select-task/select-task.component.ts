@@ -56,7 +56,6 @@ export class SelectTaskComponent implements OnInit {
     console.log(this.table);
     return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1 && task.completed === statusBool);
-      
   }
 
   getTasks(): void{
