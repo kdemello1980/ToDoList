@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { SelectTaskComponent } from './select-task/select-task.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 /**
  * Services
@@ -44,7 +45,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     TaskListComponent,
     UpdateTaskComponent,
     SelectTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,

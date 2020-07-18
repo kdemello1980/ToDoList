@@ -48,11 +48,20 @@ export class SelectTaskComponent implements OnInit {
   getTasks(): void{
     this.todoServ.getTodos().subscribe(
       response => {
+        this.allTasks = [];
         for (const temp of response){
           this.allTasks.push(temp);
         }
       }
     );
+  }
+
+  refreshList(): void{
+    this.getTasks();
+    this.filteredTasks = this.allTasks;
+    this.dataSource = this.filteredTasks;
+    this.taskFilter = '';
+    this.table.renderRows();
   }
 
   openUpdateDialog(data: ITask): void {
@@ -67,6 +76,7 @@ export class SelectTaskComponent implements OnInit {
     console.log(data);
   }
 
+
   ngOnInit(): void {
     this.getTasks();
     this.filteredTasks = this.allTasks;
@@ -74,12 +84,12 @@ export class SelectTaskComponent implements OnInit {
   }
 
   ngAfterViewChecked(): void{
-    this.table.renderRows();
+    this.refreshList();
   }
 
-  ngDoCheck(): void {
-    // this.table.renderRows();
-    console.log('docheck');
-  }
+  // ngDoCheck(): void {
+  //   // this.table.renderRows();
+  //   console.log('docheck');
+  // }
 
 }

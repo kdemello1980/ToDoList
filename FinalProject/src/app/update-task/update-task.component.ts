@@ -41,7 +41,7 @@ export class UpdateTaskComponent implements OnInit {
 
 // I have to wrap conditionals in functions? WTF?
 blargh(): void {
-  if (this.foo == false){
+  if (this.foo === false){
     this.selectedComplete = this.completedList[0].value;
   } else {
     this.selectedComplete = this.completedList[1].value;

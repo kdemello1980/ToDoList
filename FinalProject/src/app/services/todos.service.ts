@@ -30,30 +30,7 @@ export interface ITodo {
   createdOn: string;
   id: number;
   description: string;
-  title: ITodoTitle;
-}
-
-/**
- * ITodoTitle is the interface for Todo titles.  Since the basic todo
- * modle only includes a simple title, rather than a more descriptive
- * title + description, this interface combines both to be stored in the
- * API title field.  The title field of the interface is simply the title.
- * The task field contains the more detailed description.
- *
- * This should serialize to something like:
- *
- *    ITodoTitle: {
- *      "title": "Some task title",
- *      "task": "I need to pick up my laundry, and take the dog to the vet."
- *    }
- *
- * That resulting JSON can be fed to the API as text, and it should work
- * OK.  The view & update task functions need this extra description to
- * be of any real use.
- */
-export interface ITodoTitle {
   title: string;
-  task: string;
 }
 
 @Injectable({
@@ -61,11 +38,10 @@ export interface ITodoTitle {
 })
 export class TodosService {
 
-  // baseUrl = 'http://localhost:8080/todos';
   baseUrl = 'http://ec2-54-205-235-199.compute-1.amazonaws.com:8080/todos';
   constructor(private httpCli: HttpClient) {  }
 
-  postTodo(todoForm: ITodo): Observable<string>{
+  postTodo(todoForm: any): Observable<string>{
     const httpHead = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
