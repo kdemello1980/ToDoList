@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <mat-card>
@@ -15,6 +16,19 @@
     </mat-form-field>
     <!--<button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>-->
 </mat-card>
+=======
+<div fxFlex="100%"  class="outerflex">
+
+  <mat-card class="mat-elevation-z8">
+  <mat-card-content>
+    
+
+<div>
+    <input type="text" [(ngModel)] = 'taskFilter'>
+    <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
+</div>
+<br>
+>>>>>>> da564171210d9f68ca76b2dcf88e15cfc5184c00
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -46,6 +60,8 @@
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openUpdateDialog()"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openUpdateDialog(row)"></tr>
   </table>
-    
+</mat-card-content>
+</mat-card>
+</div>

@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 /**
@@ -57,6 +57,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatInputModule,
     FormsModule,
+    // FormGroup,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatSelectModule,
