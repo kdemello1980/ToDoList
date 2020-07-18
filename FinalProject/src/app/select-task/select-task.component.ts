@@ -20,6 +20,8 @@ export class SelectTaskComponent implements OnInit {
 
   taskListFilter = '';
 
+  statusFilter = '';
+
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
   // dataSource = this.filteredTasks;
 
@@ -43,14 +45,22 @@ export class SelectTaskComponent implements OnInit {
     };
   }
 
-  filterTasks(filterBy: string): ITask[]{
+  filterTasks(filterBy: string, status: string): ITask[]{
     filterBy = filterBy.toLocaleLowerCase();
+    const statusBool = status === 'true' ? true : false;
 
-    return this.allTasks.filter((task: ITask) =>
+    if (status === '') {
+      return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
+    console.log(this.table);
+    return this.allTasks.filter((task: ITask) =>
+      task.title.toLocaleLowerCase().indexOf(filterBy) !== -1 && task.completed === statusBool);
+      
   }
 
   getTasks(): void{
+    this.allTasks = [];
     this.todoServ.getTodos().subscribe(
       response => {
         // this.allTasks = [];
@@ -86,6 +96,11 @@ export class SelectTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
+    /*this.filteredTasks = this.allTasks;
+    this.dataSource = this.filteredTasks;
+    console.log(this.dataSource);*/
+    
+    //this.table.renderRows();
     // this.filteredTasks = this.allTasks;
     // this.dataSource = this.filteredTasks;
     // this.refreshList();
