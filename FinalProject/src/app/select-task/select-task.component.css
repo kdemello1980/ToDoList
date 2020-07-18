@@ -1,3 +1,9 @@
 table {
     width: 100%;
   }
+
+  .container {
+    justify-content: center;
+    /* background-image: '../assets/paisley.jpg';
+    background-repeat: repeat; */
+  }
