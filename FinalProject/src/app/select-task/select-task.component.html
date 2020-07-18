@@ -1,7 +1,13 @@
-<<<<<<< HEAD
 
 
-<mat-card>
+
+<div fxFlex="100%"  class="outerflex">
+
+  <mat-card class="mat-elevation-z8">
+  <mat-card-content>
+    
+
+<div>
     <mat-form-field class="example-full-width">
       <mat-label>Search Tasks by Title</mat-label>
       <input matInput [(ngModel)] = 'taskFilter'>
@@ -15,22 +21,10 @@
         </mat-select>
     </mat-form-field>
     <!--<button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>-->
-</mat-card>
-=======
-<div fxFlex="100%"  class="outerflex">
-
-  <mat-card class="mat-elevation-z8">
-  <mat-card-content>
-    
-
-<div>
-    <input type="text" [(ngModel)] = 'taskFilter'>
-    <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
 </div>
 <br>
->>>>>>> da564171210d9f68ca76b2dcf88e15cfc5184c00
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" (load)="table.renderRows()" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

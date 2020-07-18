@@ -23,7 +23,7 @@ export class SelectTaskComponent implements OnInit {
   statusFilter = '';
 
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
-  dataSource = this.filteredTasks;
+  @Output() dataSource = this.filteredTasks;
 
   get taskFilter(): string{
     return this.taskListFilter;
@@ -59,8 +59,10 @@ export class SelectTaskComponent implements OnInit {
       return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
+    console.log(this.table);
     return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1 && task.completed === statusBool);
+      
   }
 
   getTasks(): void{
@@ -78,9 +80,9 @@ export class SelectTaskComponent implements OnInit {
     this.getTasks();
     this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;
-    this.taskFilter = '';
+    //this.taskFilter = '';
     console.log(this.allTasks);
-    this.table.renderRows();
+    //this.table.renderRows();
   }
 
   openUpdateDialog(data: ITask): void {
@@ -100,7 +102,8 @@ export class SelectTaskComponent implements OnInit {
     this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;
     console.log(this.dataSource);
-    this.taskFilter = 'e';
+    
+    //this.table.renderRows();
   }
 
 
