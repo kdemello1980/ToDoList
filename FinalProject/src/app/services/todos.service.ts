@@ -61,7 +61,7 @@ export interface ITodoTitle {
 })
 export class TodosService {
 
-  // baseUrl = 'http://ec2-18-191-63-47.us-east-2.compute.amazonaws.com:8080/todos';
+  // baseUrl = 'http://localhost:8080/todos';
   baseUrl = 'http://ec2-54-205-235-199.compute-1.amazonaws.com:8080/todos';
   constructor(private httpCli: HttpClient) {  }
 
