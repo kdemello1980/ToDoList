@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { TodosService } from '../services/todos.service';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class CreateTaskComponent implements OnInit {
   inputDescription = new FormControl('', [Validators.required]);
   defaultValue = 'No';
 
-  constructor(public dialog: MatDialog, private todoServ: TodosService) { }
+  constructor(public dialog: MatDialog, private todoServ: TodosService, private dialogRef: MatDialogRef<CreateTaskComponent>, private cd: ChangeDetectorRef) { }
 
   // openDialog(): void { // Here in case we decided to swap to dialog
   //   const dialogRef = this.dialog.open(CreateDialogComponent);
@@ -48,6 +48,13 @@ export class CreateTaskComponent implements OnInit {
       }
     );
 
+    this.dialogRef.close();
+    this.cd.detectChanges();
+
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 
   getErrorMessage(input: FormControl): string{

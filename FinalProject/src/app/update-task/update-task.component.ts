@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { ITask } from '../task-list/task';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TodosService } from '../services/todos.service';
+import { SelectTaskComponent } from '../select-task/select-task.component';
 
 interface Completed {
   value: boolean;
@@ -31,7 +32,7 @@ export class UpdateTaskComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: ITask,
               private fb: FormBuilder,
               private tService: TodosService,
-              private cd: ChangeDetectorRef
+              private cd: ChangeDetectorRef,
     ) {
       this.foo = this.data.completed;
       console.log(this.foo);

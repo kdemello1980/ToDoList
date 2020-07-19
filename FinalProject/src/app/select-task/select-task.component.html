@@ -1,14 +1,34 @@
-<div fxFlex="100%"  class="outerflex">
 
-  <mat-card class="mat-elevation-z8">
+
+<div class="container" >
+<div fxFlex="80%" fxFlex.xs="100%"  class="outerflex">
+  <mat-toolbar color="primary">
+    <span>To-do List</span>
+    <span class="example-fill-remaining-space"></span>
+  </mat-toolbar>
+  <mat-card class="mat-elevation-z16">
   <mat-card-content>
+    
 
 <div>
-    <input type="text" [(ngModel)] = 'taskFilter'>
-</div>
-<br>
+    <!--<mat-form-field>
+      <mat-label>Filter by status</mat-label>
+        <mat-select [(ngModel)]='statusFilter'>
+          <mat-option value=''>---</mat-option>
+          <mat-option value='true' selected>Complete</mat-option>
+          <mat-option value='false'>Not Complete</mat-option>
+        </mat-select>
+    </mat-form-field>-->
+  <mat-form-field>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <input matInput (keyup)="doFilter($event.target.value)" placeholder="Search by title">
+
+  </mat-form-field>
+  &nbsp; &nbsp;
+    <button (click) = 'openCreateTask()' mat-stroked-button color="primary">Create Task</button>
+</div>
+
+<table mat-table [dataSource]="matDataSource" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -33,8 +53,8 @@
   
     <!-- Complete Column -->
     <ng-container matColumnDef="completed">
-      <th mat-header-cell *matHeaderCellDef> Completed </th>
-      <td mat-cell *matCellDef="let ITask"> {{ITask.completed ? 'Yes' : 'No'}} </td>
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let ITask"> {{ITask.completed ? 'Complete' : 'Open'}} </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -42,4 +62,5 @@
   </table>
 </mat-card-content>
 </mat-card>
+</div>
 </div>
