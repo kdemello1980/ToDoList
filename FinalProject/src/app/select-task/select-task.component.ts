@@ -83,7 +83,7 @@ export class SelectTaskComponent implements OnInit {
 
     dialogConfig.autoFocus = true;
     dialogConfig.data =  data;
-    dialogConfig.height = '520px';
+    // dialogConfig.height = '450px';
     dialogConfig.width = '500px';
 
     const ref = this.dialog.open(UpdateTaskComponent, dialogConfig);

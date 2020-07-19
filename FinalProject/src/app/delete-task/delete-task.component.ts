@@ -21,7 +21,6 @@ export class DeleteTaskComponent implements OnInit {
       console.log(response);
       }
     );
-      
   }
   */
 
