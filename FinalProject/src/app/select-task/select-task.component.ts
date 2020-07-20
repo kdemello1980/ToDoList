@@ -87,11 +87,12 @@ export class SelectTaskComponent implements OnInit {
     dialogConfig.width = '500px';
 
     const ref = this.dialog.open(UpdateTaskComponent, dialogConfig);
-    ref.afterClosed().subscribe(() => {
+    ref.afterClosed().subscribe(response => {
       this.refreshList();
     });
     console.log(data);
   }
+
 
   ngOnInit(): void {
     this.getTasks();
