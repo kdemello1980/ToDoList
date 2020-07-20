@@ -28,7 +28,7 @@ export class CreateTaskComponent implements OnInit {
   //   });
   // }
 
-  createTask(): void{
+  createTask(): boolean{
     const taskTitle = (document.getElementById('taskTitle') as HTMLInputElement).value;
     const taskComplete = ((document.getElementById('taskComplete') as HTMLInputElement).value === 'Yes') ?
       true : false;
@@ -37,7 +37,7 @@ export class CreateTaskComponent implements OnInit {
     if (!taskTitle || !taskDescription){
       console.log(`${taskTitle} ${taskComplete} ${taskDescription}`);
       this.getErrorMessage(this.inputTitle);
-      return;
+      return false;
     }
     // format used to 'post' to the api
     const taskForm = {
@@ -51,7 +51,7 @@ export class CreateTaskComponent implements OnInit {
         console.log(response);
       }
     );
-
+    return true;
   }
 
   getErrorMessage(input: FormControl): string{
@@ -67,7 +67,10 @@ export class CreateTaskComponent implements OnInit {
   }
 
   create(): void {
-    this.createTask();
+    // Added if in order to make sure the dialog doesn't close if createTask fails
+    if (!this.createTask()){
+      return;
+    }
     this.cd.detectChanges();
     this.dialogRef.close(this.form.value);
   }
