@@ -21,8 +21,6 @@ import { CreateTaskComponent } from './create-task/create-task.component';
  */
 import { TodosService } from './services/todos.service';
 import { TaskListComponent } from './task-list/task-list.component';
-import { UpdateTaskService } from './services/update-task.service';
-import { SelectTaskService } from './services/select-task.service';
 
 /**
  * Material Modules
@@ -37,6 +35,8 @@ import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+
 
 
 @NgModule({
@@ -57,19 +57,21 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatInputModule,
     FormsModule,
-    // FormGroup,
+    FormGroup,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatSelectModule,
     MatButtonModule,
     MatDialogModule,
+    MatSort,
     RouterModule.forRoot([
       { path: 'udpate-task', component: UpdateTaskComponent },
       { path: '**', redirectTo: 'update-task'}
 
     ])
   ],
-  providers: [TodosService, UpdateTaskService, SelectTaskService],
-  bootstrap: [AppComponent]
+  providers: [TodosService],
+  bootstrap: [AppComponent],
+  exports: [MatSort]
 })
 export class AppModule { }
