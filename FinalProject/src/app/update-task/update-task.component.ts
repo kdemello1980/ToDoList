@@ -77,4 +77,19 @@ close(): void {
     this.dialogRef.close();
   }
 
+delete(): void {
+  if (confirm('Are you sure you want to delete this task?\n' + this.data.title)) {
+  console.log(JSON.stringify(this.form.value));
+  this.tService.deleteTodo(this.form.value.id).subscribe(
+    response => {
+      console.log('success');
+      this.cd.detectChanges();
+      this.dialogRef.close(this.form.value);
+    }
+  );
+  //this.cd.detectChanges();
+  //this.dialogRef.close(this.form.value);
+  }
+}
+
 }
