@@ -1,9 +1,12 @@
 
 
-
-<div fxFlex="100%"  class="outerflex">
-
-  <mat-card class="mat-elevation-z8">
+<div class="container" >
+<div fxFlex="80%" fxFlex.xs="100%"  class="outerflex">
+  <mat-toolbar color="primary">
+    <span>To-do List</span>
+    <span class="example-fill-remaining-space"></span>
+  </mat-toolbar>
+  <mat-card class="mat-elevation-z16">
   <mat-card-content>
     
 
@@ -19,6 +22,7 @@
   <mat-form-field>
 
     <input matInput (keyup)="doFilter($event.target.value)" placeholder="Search by title">
+
   </mat-form-field>
   &nbsp; &nbsp;
     <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
@@ -49,8 +53,8 @@
   
     <!-- Complete Column -->
     <ng-container matColumnDef="completed">
-      <th mat-header-cell *matHeaderCellDef> Completed </th>
-      <td mat-cell *matCellDef="let ITask"> {{ITask.completed ? 'Yes' : 'No'}} </td>
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let ITask"> {{ITask.completed ? 'Complete' : 'Open'}} </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -58,4 +62,5 @@
   </table>
 </mat-card-content>
 </mat-card>
+</div>
 </div>

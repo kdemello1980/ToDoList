@@ -56,7 +56,6 @@ export class SelectTaskComponent implements OnInit {
     console.log(this.table);
     return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1 && task.completed === statusBool);
-      
   }
 
   getTasks(): void{
@@ -84,7 +83,7 @@ export class SelectTaskComponent implements OnInit {
 
     dialogConfig.autoFocus = true;
     dialogConfig.data =  data;
-    dialogConfig.height = '520px';
+    // dialogConfig.height = '450px';
     dialogConfig.width = '500px';
 
     const ref = this.dialog.open(UpdateTaskComponent, dialogConfig);
