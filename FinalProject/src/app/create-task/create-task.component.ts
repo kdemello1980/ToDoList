@@ -3,6 +3,11 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { TodosService } from '../services/todos.service';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 
+interface Completed {
+  value: boolean;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
@@ -14,6 +19,7 @@ export class CreateTaskComponent implements OnInit {
   inputDescription = new FormControl('', [Validators.required]);
   defaultValue = 'No';
   form: FormGroup;
+  selectedValue: boolean;
 
   constructor(private todoServ: TodosService,
               private dialogRef: MatDialogRef<CreateTaskComponent>,
@@ -28,10 +34,23 @@ export class CreateTaskComponent implements OnInit {
   //   });
   // }
 
+  completedList: Completed[] = [
+    { value: false, viewValue: 'Open'},
+    { value: true, viewValue: 'Complete'}
+  ];
+
+  selected(event): void{
+    const selectedData = {
+      value: event.value
+    };
+    console.log(selectedData);
+    this.selectedValue = event.value;
+  }
+
   createTask(): boolean{
+    console.log(this.selectedValue);
     const taskTitle = (document.getElementById('taskTitle') as HTMLInputElement).value;
-    const taskComplete = ((document.getElementById('taskComplete') as HTMLInputElement).value === 'Yes') ?
-      true : false;
+    const taskComplete = this.selectedValue;
     const taskDescription = (document.getElementById('taskDescription') as HTMLInputElement).value;
 
     if (!taskTitle || !taskDescription){

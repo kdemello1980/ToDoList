@@ -6,26 +6,26 @@
 
       <mat-form-field class="input" hintLabel="Max 20 characters" appearance="fill">
         <mat-label>Enter Your Title</mat-label>
-        <input matInput #input maxlength="20" placeholder="Ex. Order food" formControlName="title" id="taskTitle" required>
-        <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+        <input matInput #input maxlength="25" placeholder="Ex. Order food" id="taskTitle" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/25</mat-hint>
         <mat-error *ngIf="inputTitle.invalid">{{getErrorMessage(inputTitle)}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="input" appearance="fill">
+      <mat-form-field class="select" appearance="fill">
         <mat-label>Task Status</mat-label>
-        <mat-select id="taskComplete" required [(value)]='defaultValue' formControlName="completed">
-          <mat-option value="false">Open</mat-option>
-          <mat-option value="true" selected>Completed</mat-option>
+        <!-- <mat-select  formControlName="completed" [(ngModel)]="selectedComplete"> -->
+        <mat-select id="taskComplete" (selectionChange)="selected($event)">
+            <!-- <mat-option></mat-option> -->
+            <mat-option [value]="option.value" *ngFor="let option of completedList">{{ option.viewValue }}
+            </mat-option>
         </mat-select>
-        <mat-hint align="end">Has the task been finished?</mat-hint>
-        <mat-error *ngIf="inputComplete.invalid">{{getErrorMessage(inputComplete)}}</mat-error>
-      </mat-form-field>
+    </mat-form-field>
 
       <br>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Task Description</mat-label>
-        <textarea matInput id="taskDescription" formControlName="description" required></textarea>
+        <textarea matInput id="taskDescription" required></textarea>
         <mat-error *ngIf="inputDescription.invalid">{{getErrorMessage(inputDescription)}}</mat-error>
       </mat-form-field>
 
