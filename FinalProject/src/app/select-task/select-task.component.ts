@@ -98,8 +98,8 @@ export class SelectTaskComponent implements OnInit {
     /*this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;
     console.log(this.dataSource);*/
-    
-    //this.table.renderRows();
+
+    // this.table.renderRows();
     // this.filteredTasks = this.allTasks;
     // this.dataSource = this.filteredTasks;
     // this.refreshList();
