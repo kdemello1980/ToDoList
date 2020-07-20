@@ -18,9 +18,9 @@ export class SelectTaskComponent implements OnInit {
 
   // @Output() filteredTasks: ITask[];
 
-  taskListFilter = '';
+  // taskListFilter = '';
 
-  statusFilter = '';
+  // statusFilter = '';
 
   displayedColumns: string[] = ['id', 'title', 'createdOn', 'completed'];
   // dataSource = this.filteredTasks;
