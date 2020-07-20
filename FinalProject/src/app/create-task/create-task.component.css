@@ -10,3 +10,11 @@ button {
   font-size: 16px;
   margin: 5px;
 }
+
+.input  {
+  width: 100%;
+}
+
+.task-details {
+  width: 100%;
+}
