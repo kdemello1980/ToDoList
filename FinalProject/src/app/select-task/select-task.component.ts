@@ -4,6 +4,7 @@ import { TodosService } from '../services/todos.service';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CreateTaskComponent } from '../create-task/create-task.component';
 
 @Component({
   selector: 'app-select-task',
@@ -91,6 +92,19 @@ export class SelectTaskComponent implements OnInit {
       this.refreshList();
     });
     console.log(data);
+  }
+
+  openCreateDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '500px';
+
+    const ref = this.dialog.open(CreateTaskComponent, dialogConfig);
+    ref.afterClosed().subscribe(() => {
+      this.refreshList();
+    });
+    console.log('Created Task hopefully');
   }
 
   ngOnInit(): void {
