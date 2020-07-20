@@ -6,14 +6,14 @@
 
       <mat-form-field class="input" hintLabel="Max 20 characters" appearance="fill">
         <mat-label>Enter Your Title</mat-label>
-        <input matInput #input maxlength="20" placeholder="Ex. Order food" id="taskTitle" required>
+        <input matInput #input maxlength="20" placeholder="Ex. Order food" formControlName="title" id="taskTitle" required>
         <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
         <mat-error *ngIf="inputTitle.invalid">{{getErrorMessage(inputTitle)}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Task Completed</mat-label>
-        <mat-select id="taskComplete" required [(value)]='defaultValue'>
+        <mat-select id="taskComplete" required [(value)]='defaultValue' formControlName="completed">
           <mat-option value="Yes">Yes</mat-option>
           <mat-option value="No" selected>No</mat-option>
         </mat-select>
@@ -25,7 +25,7 @@
 
       <mat-form-field class="input" appearance="fill">
         <mat-label>Task Description</mat-label>
-        <textarea matInput id="taskDescription" required></textarea>
+        <textarea matInput id="taskDescription" formControlName="description" required></textarea>
         <mat-error *ngIf="inputDescription.invalid">{{getErrorMessage(inputDescription)}}</mat-error>
       </mat-form-field>
 
@@ -33,5 +33,6 @@
   </div>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-stroked-button color="primary" (click)="createTask()">Create Task</button>
+  <button mat-stroked-button color="primary" (click)="create()">Create Task</button>
+  <button mat-button color="primary" (click)="close()">Cancel</button>
 </div>
