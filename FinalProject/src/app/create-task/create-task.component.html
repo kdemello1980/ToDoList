@@ -12,10 +12,10 @@
       </mat-form-field>
 
       <mat-form-field class="input" appearance="fill">
-        <mat-label>Task Completed</mat-label>
+        <mat-label>Task Status</mat-label>
         <mat-select id="taskComplete" required [(value)]='defaultValue' formControlName="completed">
-          <mat-option value="Yes">Yes</mat-option>
-          <mat-option value="No" selected>No</mat-option>
+          <mat-option value="false">Open</mat-option>
+          <mat-option value="true" selected>Completed</mat-option>
         </mat-select>
         <mat-hint align="end">Has the task been finished?</mat-hint>
         <mat-error *ngIf="inputComplete.invalid">{{getErrorMessage(inputComplete)}}</mat-error>
