@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, Output, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, DoCheck, AfterViewInit } from '@angular/core';
 import { ITask } from '../task-list/task';
 import { TodosService } from '../services/todos.service';
 import {MatTable, MatTableDataSource} from '@angular/material/table';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MatSort } from '@angular/material/sort';
+
 
 @Component({
   selector: 'app-select-task',
@@ -105,6 +105,7 @@ export class SelectTaskComponent implements OnInit {
     // this.dataSource = this.filteredTasks;
     // this.refreshList();
   }
+
 
 
   doFilter = (value: string) => {
