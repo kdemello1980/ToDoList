@@ -11,8 +11,8 @@
 
             <mat-form-field class="input" appearance="fill">
                 <mat-label>Task Title</mat-label>
-                <input matInput #titleLength maxlength="20" placeholder="title" formControlName="title" required>
-                <mat-hint align="end">{{titleLength.value?.length || 0}}/20</mat-hint>
+                <input matInput #titleLength maxlength="25" placeholder="title" formControlName="title" required>
+                <mat-hint align="end">{{titleLength.value?.length || 0}}/25</mat-hint>
             </mat-form-field>
 
             <!--

@@ -7,3 +7,7 @@ table {
     /* background-image: '../assets/paisley.jpg';
     background-repeat: repeat; */
   }
+
+  input {
+    margin: 5px;
+  }
