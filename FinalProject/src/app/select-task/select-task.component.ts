@@ -55,7 +55,6 @@ export class SelectTaskComponent implements OnInit {
       return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
     }
-    console.log(this.table);
     return this.allTasks.filter((task: ITask) =>
       task.title.toLocaleLowerCase().indexOf(filterBy) !== -1 && task.completed === statusBool);
   }
@@ -92,7 +91,6 @@ export class SelectTaskComponent implements OnInit {
     ref.afterClosed().subscribe(response => {
       this.refreshList();
     });
-    console.log(data);
   }
 
   openCreateDialog(): void {
@@ -105,14 +103,12 @@ export class SelectTaskComponent implements OnInit {
     ref.afterClosed().subscribe(() => {
       this.refreshList();
     });
-    console.log('Created Task hopefully');
   }
 
   ngOnInit(): void {
     this.getTasks();
     /*this.filteredTasks = this.allTasks;
-    this.dataSource = this.filteredTasks;
-    console.log(this.dataSource);*/
+    this.dataSource = this.filteredTasks;*/
 
     // this.table.renderRows();
     // this.filteredTasks = this.allTasks;
