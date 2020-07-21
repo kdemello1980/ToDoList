@@ -34,7 +34,7 @@
             -->
 
             <mat-form-field class="task-details" appearance="fill">
-                <mat-label>Task Details</mat-label>
+                <mat-label>Task Description</mat-label>
                 <textarea matTextareaAutosize matAutosizeMinRows='5' matAutosizeMaxRows='20' matInput #input
                     maxlength="255" formControlName="description" required>[(data.description)]</textarea>
                 <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
