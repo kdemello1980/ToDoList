@@ -9,7 +9,7 @@
                 Title input field.
             -->
 
-            <mat-form-field class="input" appearance="standard">
+            <mat-form-field class="input" appearance="fill">
                 <mat-label>Task Title</mat-label>
                 <input matInput #titleLength maxlength="20" placeholder="title" formControlName="title" required>
                 <mat-hint align="end">{{titleLength.value?.length || 0}}/20</mat-hint>
@@ -19,7 +19,7 @@
                 Status drop down, check card status and show correct state
                 when initialized.
             -->
-            <mat-form-field class="select" appearance="standard">
+            <mat-form-field class="select" appearance="fill">
                 <mat-label>Task Status</mat-label>
                 <!-- <mat-select  formControlName="completed" [(ngModel)]="selectedComplete"> -->
                 <mat-select formControlName="completed">
@@ -33,7 +33,7 @@
                 Task details text input.  Need to prepopulate with actual task contents.
             -->
 
-            <mat-form-field class="task-details" appearance="outline">
+            <mat-form-field class="task-details" appearance="fill">
                 <mat-label>Task Details</mat-label>
                 <textarea matTextareaAutosize matAutosizeMinRows='5' matAutosizeMaxRows='20' matInput #input
                     maxlength="255" formControlName="description" required>[(data.description)]</textarea>
