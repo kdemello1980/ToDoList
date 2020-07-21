@@ -1,8 +1,8 @@
 <div mat-dialog-content class="content" [formGroup]="form">
     <div fxFlex="100%">
 
-
         <h2 mat-dialog-title>Details for Task {{data.id}}</h2>
+
         <mat-dialog-content>
 
             <!--
@@ -43,10 +43,10 @@
         </mat-dialog-content>
     </div>
 </div>
+
 <div mat-dialog-actions align="end">
     <button mat-raised-button color="warn" class="delete" (click)="delete()">Delete</button>
-     <button mat-raised-button color="primary" (click)="save()">Save</button>
 
-    <button mat-button color="primary" (click)="close()">Cancel</button>
-
-</div>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
+    <button mat-button  color="primary" (click)="close()">Cancel</button>
+    </div>
