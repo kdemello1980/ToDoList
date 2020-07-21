@@ -26,6 +26,7 @@
   </mat-form-field>
   &nbsp; &nbsp;
     <button (click) = 'refreshList()' mat-stroked-button color="primary">Refresh List</button>
+    <button (click) = 'openCreateDialog()' mat-stroked-button color="primary">Create Task</button>
 </div>
 
 <table mat-table  [dataSource]="matDataSource" class="mat-elevation-z8">
