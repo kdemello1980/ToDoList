@@ -51,7 +51,6 @@ export class TodosService {
       })
     };
     // We send our 'todoForm' as the body of our request
-    console.log(JSON.stringify(todoForm));
     return this.httpCli.post<string>(this.baseUrl, JSON.stringify(todoForm), httpHead);
   }
 

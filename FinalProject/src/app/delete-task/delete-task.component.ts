@@ -15,10 +15,8 @@ export class DeleteTaskComponent implements OnInit {
   constructor(private todos: TodosService) { }
   /*
   delete(): void {
-    console.log(this.id);
     this.todos.deleteTodo(this.id).subscribe(
       response => {
-      console.log(response);
       }
     );
   }
