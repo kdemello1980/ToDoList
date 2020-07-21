@@ -2,6 +2,15 @@ table {
     width: 100%;
   }
 
+tr.mat-row {
+  cursor: pointer;
+  
+}
+tr.mat-row:hover{
+  background-color: #cccccc;
+}
+
+
   .container {
     justify-content: center;
     /* background-image: '../assets/paisley.jpg';

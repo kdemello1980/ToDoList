@@ -30,7 +30,6 @@ export class CreateTaskComponent implements OnInit {
   //   const dialogRef = this.dialog.open(CreateDialogComponent);
 
   //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
   //   });
   // }
 
@@ -43,18 +42,15 @@ export class CreateTaskComponent implements OnInit {
     const selectedData = {
       value: event.value
     };
-    console.log(selectedData);
     this.selectedValue = event.value;
   }
 
   createTask(): boolean{
-    console.log(this.selectedValue);
     const taskTitle = (document.getElementById('taskTitle') as HTMLInputElement).value;
     const taskComplete = this.selectedValue;
     const taskDescription = (document.getElementById('taskDescription') as HTMLInputElement).value;
 
     if (!taskTitle || !taskDescription){
-      console.log(`${taskTitle} ${taskComplete} ${taskDescription}`);
       this.getErrorMessage(this.inputTitle);
       return false;
     }
@@ -64,10 +60,8 @@ export class CreateTaskComponent implements OnInit {
       title: taskTitle,
       description: taskDescription
     };
-    console.log(taskForm);
     this.todoServ.postTodo(taskForm).subscribe(
       response => {
-        console.log(response);
       }
     );
     return true;

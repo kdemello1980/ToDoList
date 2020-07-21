@@ -36,7 +36,6 @@ export class UpdateTaskComponent implements OnInit {
               private cd: ChangeDetectorRef,
     ) {
       this.foo = this.data.completed;
-      console.log(this.foo);
 
   }
   // constructor(){}
@@ -48,11 +47,9 @@ blargh(): void {
   } else {
     this.selectedComplete = this.completedList[1].value;
   }
-  console.log(this.selectedComplete);
 }
 
 ngOnInit(): void {
-    console.log(this.data.id);
     this.form = this.fb.group({
       id: [this.data.id, []],
       title: [this.data.title, []],
@@ -64,10 +61,8 @@ ngOnInit(): void {
   }
 
 save(): void {
-    console.log(JSON.stringify(this.form.value));
     this.tService.updateTodo(this.form.value).subscribe(
       response => {
-        console.log('success');
       }
     );
     this.cd.detectChanges();
@@ -80,10 +75,8 @@ close(): void {
 
 delete(): void {
   if (confirm('Are you sure you want to delete this task?\n' + this.data.title)) {
-  console.log(JSON.stringify(this.form.value));
   this.tService.deleteTodo(this.form.value.id).subscribe(
     response => {
-      console.log('success');
       this.cd.detectChanges();
       this.dialogRef.close(this.form.value);
     }
