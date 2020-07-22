@@ -112,6 +112,8 @@ export class SelectTaskComponent implements OnInit, AfterViewInit {
     const ref = this.dialog.open(CreateTaskComponent, dialogConfig);
     ref.afterClosed().subscribe(() => {
       this.refreshList();
+      this.paginator.lastPage();
+
     });
   }
 
