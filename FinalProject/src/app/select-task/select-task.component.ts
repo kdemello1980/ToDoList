@@ -5,16 +5,20 @@ import {MatTable, MatTableDataSource} from '@angular/material/table';
 import { UpdateTaskComponent } from '../update-task/update-task.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CreateTaskComponent } from '../create-task/create-task.component';
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-select-task',
   templateUrl: './select-task.component.html',
   styleUrls: ['./select-task.component.css']
 })
-export class SelectTaskComponent implements OnInit {
+export class SelectTaskComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatTable) table: MatTable<ITask>;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
+
 
   allTasks: ITask[] = [];
 
@@ -29,6 +33,7 @@ export class SelectTaskComponent implements OnInit {
 
   public matDataSource = new MatTableDataSource<ITask>();
 
+
   // get taskFilter(): string{
   //   return this.taskListFilter;
   // }
@@ -42,8 +47,11 @@ export class SelectTaskComponent implements OnInit {
   // }
 
   constructor(private todoServ: TodosService, private dialog: MatDialog) {
+
+
     this.matDataSource.filterPredicate = (data, filter: string ): boolean => {
       return data.title.toLowerCase().includes(filter);
+
     };
   }
 
@@ -67,6 +75,8 @@ export class SelectTaskComponent implements OnInit {
         // for (const temp of response){
         //   this.allTasks.push(temp);
           this.matDataSource.data = response as ITask[];
+
+          this.matDataSource.paginator = this.paginator;
         }
     );
   }
@@ -106,6 +116,7 @@ export class SelectTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getTasks();
     /*this.filteredTasks = this.allTasks;
     this.dataSource = this.filteredTasks;*/
@@ -114,9 +125,13 @@ export class SelectTaskComponent implements OnInit {
     // this.filteredTasks = this.allTasks;
     // this.dataSource = this.filteredTasks;
     // this.refreshList();
+    // this.matDataSource.paginator = this.paginator;
+
   }
 
-
+  ngAfterViewInit(): void {
+    this.matDataSource.sort = this.sort;
+  }
 
   doFilter = (value: string) => {
     this.matDataSource.filter = value.trim().toLocaleLowerCase();

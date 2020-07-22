@@ -20,3 +20,6 @@ tr.mat-row:hover{
   input {
     margin: 5px;
   }
+  th.mat-sort-header-sorted {
+    color: black;
+  }

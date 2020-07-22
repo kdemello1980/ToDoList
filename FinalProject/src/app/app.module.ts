@@ -35,6 +35,8 @@ import { DeleteTaskComponent } from './delete-task/delete-task.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -62,6 +64,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatButtonModule,
     MatDialogModule,
+    MatPaginatorModule,
+    MatSortModule,
     RouterModule.forRoot([
       { path: 'udpate-task', component: UpdateTaskComponent },
       { path: '**', redirectTo: 'update-task'}
@@ -70,6 +74,5 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [TodosService],
   bootstrap: [AppComponent],
-  // exports: [MatSort]
 })
 export class AppModule { }
